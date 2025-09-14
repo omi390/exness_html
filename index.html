@@ -182,13 +182,14 @@
         .badge {
             padding: 0.15rem 0.5rem;
             font-size: 0.75rem;
-            font-weight: 500;
+            /* font-weight: 500; */
             border-radius: 0.75rem;
         }
 
         .badge-success {
-            background-color: #20863496;
-            color: #bffc83;
+
+            background-color: #20863457;
+            color: #bfff8c;
         }
 
         .badge-muted {
@@ -331,7 +332,7 @@ border-radius: 50%;    color: #cbd5e1;
         .profit-text {
             font-size: 0.875rem;
             font-weight: 600;
-            color: #059669;
+            color: #55e260;
         }
 
         /* Trades List */
@@ -406,7 +407,7 @@ border-radius: 50%;    color: #cbd5e1;
 
         .trade-profit {
             font-weight: 600;
-            color: #059669;
+            color: #45c84f;
             font-size: 0.875rem;
         }
 
@@ -670,13 +671,40 @@ border-radius: 50%;    color: #cbd5e1;
         .action-btn {
             margin-bottom: 10px;
         }
+
+        /* temp   */
+
+.fixed
+ {
+
+  transition: box-shadow 0.3s ease;
+}
+
+/* shadow when scrolled */
+.fixed.scrolled{
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.25);
+}
+
+.fixed2 {
+  position: sticky;   /* keeps it pinned while scrolling */
+  top: 0;
+  z-index: 999;
+}
+.fixed {
+    background-color: #1a1d23;
+  position: sticky;  /* makes it slide up with page, then stick */
+  top: 0;            /* stick when reaching top */
+
+  z-index: 1000;      /* ensure it floats above content */
+}
     </style>
 </head>
 
 <body>
     <div class="app-container">
         <!-- Header -->
-        <div class="d" style="display: flex; justify-content: end; padding-top: 10px; padding-right: 10px;">
+        <div class="fixed2">
+                    <div class="d" style="display: flex; justify-content: end; padding-top: 10px; padding-right: 10px;">
             <button class="icon-btn">
                 <svg name="alarm" width="20" height="20">
                     <use href="/webtrading/assets/icons-BzLLixZ2.svg#alarm"></use>
@@ -798,8 +826,10 @@ border-radius: 50%;    color: #cbd5e1;
             </div>
 
         </div>
+        </div>
 
-        <!-- Tabs -->
+        <div class="fixed">
+              <!-- Tabs -->
         <div class="tabs">
             <button class="tab-btn">Open</button>
             <button class="tab-btn">Pending</button>
@@ -1018,10 +1048,24 @@ border-radius: 50%;    color: #cbd5e1;
                 <span class="nav-text">Profile</span>
             </button>
         </nav>
+        </div>
 
         <!-- Bottom padding for fixed navigation -->
         <div class="bottom-padding"></div>
     </div>
+    <script>
+        window.addEventListener("scroll", function () {
+  const tabs = document.querySelector(".tabs");
+  const triggerPoint = tabs.offsetTop;
+
+  if (window.scrollY >= triggerPoint) {
+    tabs.classList.add("fixed");
+  } else {
+    tabs.classList.remove("fixed");
+  }
+});
+
+    </script>
 </body>
 
 </html>
